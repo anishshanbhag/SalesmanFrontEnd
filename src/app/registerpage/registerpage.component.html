@@ -1,0 +1,44 @@
+<html>
+<head>
+</head>
+<body>
+   <button type="button" class="add" (click)="onClick()">Add Product</button>
+  <button type="button" class="next" (click)="onNext()">Next</button>
+  <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
+          <!-- <input id='search' placeholder="Search for a state" formControlName='search' (click)=' openDropDown() ' class=' input-underline search-bar ' type='text'> -->
+          <input id='search' placeholder="Search for a Product" formControlName='search' (keyup)="onKey($event)" (click)= 'openDropDown()'  class='input-underline search-bar' type='text'>
+  </form>
+      <div clickOutside (clickOutside)="closeDropDown()">
+          <div *ngIf='showDropDown' class='search-drop-down'>
+              <div (click)='selectValue(s)' class='search-results ' *ngFor="let s of states | searchFilter: getSearchValue()">
+                  <a [innerHTML]="s | letterBold: getSearchValue()" (click)="displayProduct(s)">
+                         {{s}}
+                  </a>
+              </div>
+          </div>
+      </div>
+
+<input id='search' placeholder="Search for a Product" (keyup)="onKey($event)"  class=' input-underline search-bar ' type='text'>
+
+   <mat-card class="first">
+
+      {{pdt?.name}}
+
+      {{pdt?.details}}
+  
+      {{pdt?.category}}
+   </mat-card>
+  <mat-card class="second">
+    <ul>
+        <div *ngFor = "let state of states">
+            <li>
+              {{state}}
+              <button type="button" (click)="onRemove(state)">Remove</button>
+          </li>
+        </div>
+    </ul>
+
+  </mat-card>
+
+</body>
+</html>

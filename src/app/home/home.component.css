@@ -1,0 +1,13 @@
+.card {
+    text-align: center;
+    max-width:500px;
+    margin:auto;
+    background-color: #f7f7f7;
+}
+button{
+  width:60px;
+  height:40px;
+  border-radius: 5px;
+  background-color: #4B8A8D;
+  color: #FFFFFF;
+}

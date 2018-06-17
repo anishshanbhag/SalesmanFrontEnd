@@ -1,0 +1,32 @@
+<html>
+<head>
+</head>
+<body>
+  <div class="card">
+    <mat-card>
+      <mat-card-title>
+        <h1>Sign In</h1>
+      </mat-card-title>
+      <mat-card-content>
+        <form (submit)="onSubmit(user.value,pass.value)">
+          <div class="form-group">
+            <label for="name">Username : </label>
+            <input type="text" #user class="form-control" id="name" required>
+          </div>
+          <br/>
+          <br/>
+          <div class="form-group">
+            <label for="alterEgo">Password : </label>
+            <input type="password" #pass class="form-control" id="alterEgo" required>
+          </div>
+          <br/>
+          <br/>
+          <button type="submit" class="btn" >Submit</button>
+        </form>
+        <br/>
+          <a (click)="onClick()">SignUp</a>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</body>
+</html>

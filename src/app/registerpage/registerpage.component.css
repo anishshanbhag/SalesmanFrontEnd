@@ -1,0 +1,89 @@
+input{
+  font-size: 20px;
+}
+button{
+  width:60px;
+  height:40px;
+  border-radius: 5px;
+  background-color: #4B8A8D;
+  color: #FFFFFF;
+}
+.first{
+  max-width: 250px;
+  position: relative;
+}
+.second{
+  max-width: 500px;
+  position: relative;
+  top:250px;
+}
+.add{
+  position: absolute;
+  top:5%;
+  left:88%;
+  background-color: #4B8A8D;
+  color: #FFFFFF;
+}
+.next{
+  position:absolute;
+  top:5%;
+  left: 80%;
+  background-color: #4B8A8D;
+  color: #FFFFFF;
+}
+
+ .card-dimensions {
+    height: 162px;
+    width: 23%;
+}
+
+.card {
+    font-family: sans-serif;
+    font-size: 18px;
+    background: #D2D2D2;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.card-container {
+    justify-content: start;
+}
+
+.icon-pos {
+    position: absolute;
+    top: 25px;
+}
+
+.search-bar {
+    position: absolute;
+    left:70%;
+    min-width: 200px;
+    text-indent: 30px !important;
+    box-sizing: border-box;
+}
+
+.search-drop-down {
+    position: absolute;
+    width: 18%;
+    left:70%;
+    top:26%;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+    background-color: #F6F6F6;
+    font-family: sans-serif;
+    opacity: 0.98;
+}
+
+.search-results {
+    padding: 10px;
+}
+
+.search-results:hover {
+    background: #707070;
+}
+
+.color-purple {
+    color: #A550BC;
+}

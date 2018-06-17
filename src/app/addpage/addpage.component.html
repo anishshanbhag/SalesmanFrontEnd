@@ -1,0 +1,38 @@
+<html>
+<head>
+</head>
+<body>
+  <div class="card">
+    <mat-card>
+      <mat-card-title>
+        <h1>Enter details</h1>
+      </mat-card-title>
+      <mat-card-content>
+        <form (submit)="onSubmit(name.value,category.value,description.value)">
+          <div class="form-group">
+            <label for="alterEgo">Enter Name : </label>
+            <input type="text" #name class="form-control" id="alterEgo" required>
+          </div>
+          <br/>
+          <br/>
+          <div class="form-group">
+            <label for="alterEgo">Enter Category : </label>
+            <input type="text" #category/>
+          </div>
+          <br/>
+          <br/>
+          <div class="form-group">
+            <label for="alterEgo">Enter Description : </label>
+            <input type="text" #description/>
+          </div>
+          <br/>
+          <br/>
+          <button type="submit" class="btn">Submit</button>
+        </form>
+        <br/>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</body>
+</html>
