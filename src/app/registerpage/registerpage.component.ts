@@ -6,7 +6,7 @@ import { HttpClient , HttpHeaders} from '@angular/common/http';
 let name:String = "";
 let states = [];
 let productList = [];
-let registeredProduct = [];
+
 
 
 interface product{
@@ -16,8 +16,14 @@ interface product{
   category: String;
 }
 
-var pdt : product;
+interface registeredProduct{
+  id : number;
+  name : String;
+}
 
+
+var pdt : product;
+var rpdt:registeredProduct[];
 @Component({
   selector: 'app-registerpage',
   templateUrl: './registerpage.component.html',
@@ -31,14 +37,29 @@ export class RegisterpageComponent implements OnInit {
 pdt : product;
   states = [];
   productList = [];
-  registeredProduct = [];
-
+rpdt:registeredProduct[] = [];
 
   showDropDown = false;
 
   constructor(private router:Router,private httpClient:HttpClient,private fb: FormBuilder) {
       this.initForm();
-      
+      let data;
+      data = localStorage.getItem('staff')
+      let id =  JSON.parse(JSON.parse(data).data).id;
+      let authToken1 = JSON.parse(JSON.parse(data).data).authToken;
+      const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type':  'application/json',
+              'authToken': authToken1
+        })
+      };
+      httpClient.post('http://localhost:9000/api/v1/productSalesman/getProductIdSalesmanIdMappingList',{"salesmanId" : id},httpOptions)
+       .subscribe((data:any) =>{
+          rpdt = data.data;
+       }
+     )
+
+
   }
   initForm(): FormGroup {
     return this.stateForm = this.fb.group({
@@ -118,16 +139,50 @@ pdt : product;
     },httpOptions)
      .subscribe((data:any) =>{
           if(data.response === '108200'){
-            this.registeredProduct.push(this.pdt.name);
+            // this.registeredProduct.push(this.pdt.name);
+            this.rpdt.push({id : this.pdt.id,name : this.pdt.name});
+            // console.log("Success");
           }
+          console.log(this.rpdt[0].id);
      }
    )
-     console.log(this.registeredProduct);
   }
 
   onRemove(value4){
-    let index3 = this.registeredProduct.indexOf(value4);
-      this.registeredProduct.splice(index3,1);
+    // let index3 = this.registeredProduct.indexOf(value4);
+    //   this.registeredProduct.splice(index3,1);
+
+    let pdtId;
+    for(let i=0;i<this.rpdt.length;i++){
+      if(this.rpdt[i].name === value4.name){
+        pdtId = this.rpdt[i].id;
+      }
+    }
+// pdtId = this.rpdt.filter((prod) => {prod.name === value4.name})[0].id;
+
+      let data = localStorage.getItem('staff');
+      let id = JSON.parse(JSON.parse(data).data).id;
+      let authToken1 = JSON.parse(JSON.parse(data).data).authToken;
+      const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type':  'application/json',
+              'authToken': authToken1
+        })
+      };
+      this.httpClient.post('http://localhost:9000/api/v1/productSalesman/removeSalesmanProduct',{
+        "productId" : pdtId,
+        "salesmanId" :id
+      },httpOptions)
+       .subscribe((data:any) =>{
+            if(data.response === '108200'){
+              for(let i=0;i<this.rpdt.length;i++){
+                if(this.rpdt[i].name === value4.name){
+                    this.rpdt.splice(i,1);
+                }
+              }
+            }
+       }
+     )
   }
 
 }

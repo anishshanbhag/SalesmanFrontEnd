@@ -34,12 +34,13 @@
    </mat-card>
   <mat-card class="second">
     <ul>
-        <div *ngFor = "let state of registeredProduct">
+        <div *ngFor = "let state of rpdt">
             <li>
-              {{state}}
+              {{state.name}}
               <button type="button" (click)="onRemove(state)" >Remove</button>
           </li>
         </div>
+
     </ul>
 
   </mat-card>
