@@ -29,7 +29,7 @@
 
       <div class="card">
         <div class="card-header">Product Description</div>
-        <div class="card-body">
+        <div class="card-body text-center">
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Product Name: {{pdt?.name}}</li>
             <li class="list-group-item">Product Details: {{pdt?.details}}</li>
@@ -46,12 +46,11 @@
         <div class="card-header">Registered Products</div>
         <div class="card-body">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item" *ngFor="let state of rpdt">
-              {{state}}
-              <button class="btn btn-danger" (click)="onRemove(state)">Remove</button>
+            <li class="list-group-item text-center" *ngFor="let state of rpdt">
+                {{state.name}}
+                <button class="btn btn-danger" (click)="onRemove(state)">Remove</button>
             </li>
           </ul>
-          <button class="btn btn-primary" (click)="onRegister()">Add</button>
         </div>
       </div>
     </div>
