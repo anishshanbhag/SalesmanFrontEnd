@@ -18,7 +18,6 @@ export class AddpageComponent implements OnInit {
   }
 
   onSubmit(value1,value2,value3){
-    // this.router.navigate(['register']);
     data = localStorage.getItem('staff')
     let authToken1 = JSON.parse(JSON.parse(data).data).authToken;
     const httpOptions = {
@@ -27,17 +26,16 @@ export class AddpageComponent implements OnInit {
             'authToken': authToken1
       })
     };
+    console.log(data);
     this.httpClient.post('http://localhost:9000/api/v1/product/createProduct',{"productName":value1,
      "productCategory": value2,"productDetails": value3},httpOptions)
      .subscribe((data:any) => {
-       if(data.response === '108200'
-      ){
+       if(data.response === '108200'){
           this.router.navigate(['register']);
        }
       else{
          alert("Error while registering Product");
       }
-
      }
    )
   }

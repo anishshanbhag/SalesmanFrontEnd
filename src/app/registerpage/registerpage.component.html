@@ -18,22 +18,26 @@
           </div>
       </div>
 
-<input id='search' placeholder="Search for a Product" (keyup)="onKey($event)"  class=' input-underline search-bar ' type='text'>
+<!-- <input id='search' placeholder="Search for a Product" (keyup)="onKey($event)"  class=' input-underline search-bar ' type='text'> -->
 
    <mat-card class="first">
 
-      {{pdt?.name}}
+    <h3> Product Name : </h3>
+     {{pdt?.name}}
+     <h3> Product Details : </h3>
+     {{pdt?.details}}
+     <h3> Product Category : </h3>
+     {{pdt?.category}}
+     <br/>
+     <button (click)="onRegister()">Add</button>
 
-      {{pdt?.details}}
-  
-      {{pdt?.category}}
    </mat-card>
   <mat-card class="second">
     <ul>
-        <div *ngFor = "let state of states">
+        <div *ngFor = "let state of registeredProduct">
             <li>
               {{state}}
-              <button type="button" (click)="onRemove(state)">Remove</button>
+              <button type="button" >Remove</button>
           </li>
         </div>
     </ul>

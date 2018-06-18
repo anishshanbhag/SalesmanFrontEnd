@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
       this.httpClient.post('http://localhost:9000/api/v1/salesman/createSalesman',{"userName":value1,
 	     "password": value2})
        .subscribe((data:any) =>{
-         // localStorage.setItem('staff',JSON.stringify(data));
+         localStorage.setItem('staff',JSON.stringify(data));
          if(data.response === 108403){
             alert('Username already exists');
         }

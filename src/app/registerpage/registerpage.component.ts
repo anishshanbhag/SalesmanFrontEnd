@@ -6,14 +6,17 @@ import { HttpClient , HttpHeaders} from '@angular/common/http';
 let name:String = "";
 let states = [];
 let productList = [];
+let registeredProduct = [];
+
 
 interface product{
+  id : number;
   name: String;
   details: String;
   category: String;
 }
 
-
+var pdt : product;
 
 @Component({
   selector: 'app-registerpage',
@@ -24,9 +27,11 @@ interface product{
 export class RegisterpageComponent implements OnInit {
   stateForm: FormGroup;
   values= "";
-
+   count=0;
+pdt : product;
   states = [];
   productList = [];
+  registeredProduct = [];
 
 
   showDropDown = false;
@@ -55,12 +60,15 @@ export class RegisterpageComponent implements OnInit {
     if(this.values.length >= 4){
       this.httpClient.post('http://localhost:9000/api/v1/product/searchProduct',{"queryString":this.values})
        .subscribe((data:any) =>{
-         let sugesstedProductDetailList= JSON.parse(data.data);
-         this.productList.push(sugesstedProductDetailList);
+         this.states = [];
+         this.productList = [];
+         let sugesstedProductDetailList = JSON.parse(data.data);
            for(let i = 0 ; i < sugesstedProductDetailList.length ; i++){
+             this.productList.push(sugesstedProductDetailList[i]);
              this.states.push(sugesstedProductDetailList[i].productName);
            }
        });
+
     }
   }
   getSearchValue() {
@@ -78,21 +86,48 @@ export class RegisterpageComponent implements OnInit {
     this.showDropDown = false;
   }
 
-  // onRemove(value){
-  //     var index1 = this.states.indexOf(value);
-  //     this.states.splice(index1,1);
-  //     this.productList.splice(index1,1);
-  // }
+  onRemove(value){
+      var index1 = this.states.indexOf(value);
+      this.states.splice(index1,1);
+      this.productList.splice(index1,1);
+  }
 
   displayProduct(value){
-
-    var index3 = this.productList.indexOf(value);
-    console.log(this.productList);
-    // var pdt: product = {
-    //   name : productList[index3].productName,
-    //   details : productList[index3].productDetails,
-    //   category: productList[index3].productCategory
-    // };
+    for(let i=0;i<this.productList.length;i++){
+      if(this.productList[i].productName === value){
+         this.pdt = {
+           id : this.productList[i].id,
+          name : this.productList[i].productName,
+          details : this.productList[i].productDetails,
+          category: this.productList[i].productCategory
+        };
+      }
+    }
   }
+
+  onRegister(){
+    let data = localStorage.getItem('staff');
+    let id = JSON.parse(JSON.parse(data).data).id;
+    let authToken1 = JSON.parse(JSON.parse(data).data).authToken;
+    const httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type':  'application/json',
+            'authToken': authToken1
+      })
+    };
+    this.httpClient.post('http://localhost:9000/api/v1/productSalesman/createProductSalesman',{
+      "productId" : this.pdt.id,
+      "salesmanId" :id
+    },httpOptions)
+     .subscribe((data:any) =>{
+          if(data.response === '108200'){
+            this.registeredProduct.push(this.pdt.name);
+          }
+     }
+   )
+
+  }
+
+
 
 }
