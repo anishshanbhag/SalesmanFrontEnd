@@ -1,36 +1,37 @@
-<html>
-<head>
-</head>
-<body>
-  <div class="card">
-    <mat-card>
-      <mat-card-title>
-        <h1>Sign Up</h1>
-      </mat-card-title>
-      <mat-card-content>
-        <form (submit)="onSubmit(user.value,pass.value,confirmPass.value)">
+<div class="row">
+  <div class="col-sm-12 col-md-3 col-lg-4"></div>
+  <div class="col-sm-12 col-md-6 col-lg-4">
+
+    <div *ngFor="let err of validationErrs, let i = index" class="alert alert-danger alert-dismissible fade show">
+      <button type="button" class="close" data-dismiss="alert" (click)="clearErrMsg(i)">&times;</button> {{err}}
+    </div>
+
+
+    <div class="card">
+      <div class="card-header text-center">
+        <h2>Sign Up</h2>
+      </div>
+      <div class="card-body">
+        <form (submit)="onSubmit(user.value, pass.value, confirmPass.value)">
           <div class="form-group">
-            <label for="name">Username : </label>
-            <input type="text" #user class="form-control" id="name" required>
+            <input type="text" #user class="form-control" placeholder="Username" required>
           </div>
-          <br/>
-          <br/>
           <div class="form-group">
-            <label for="alterEgo" >Password : </label>
-            <input type="password" #pass class="form-control" id="alterEgo" required>
+            <input type="password" #pass class="form-control" placeholder="Password" required>
           </div>
-          <br/>
-          <br/>
           <div class="form-group">
-            <label for="alterEgo" >Confirm Password : </label>
-            <input type="password" #confirmPass class="form-control"  required>
+            <input type="password" #confirmPass class="form-control" placeholder="Confirm Password" required>
           </div>
-          <br/>
-          <br/>
-          <button type="submit" class="btn" >Sign Up</button>
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-lg btn-success">Sign Up</button>
+          </div>
         </form>
-      </mat-card-content>
-    </mat-card>
+      </div>
+      <div class="card-footer text-center">
+        Or you can
+        <a class="btn btn-sm btn-outline-info text-black-50" (click)="signInPage()">sign in</a> instead
+      </div>
+    </div>
   </div>
-</body>
-</html>
+  <div class="col-sm-12 col-md-3 col-lg-4"></div>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient ,HttpHeaders} from '@angular/common/http';
+import { API_ENDPOINT } from '../../config/config';
 
 let data;
 let authToken1;
@@ -27,7 +28,7 @@ export class AddpageComponent implements OnInit {
       })
     };
     console.log(data);
-    this.httpClient.post('http://localhost:9000/api/v1/product/createProduct',{"productName":value1,
+    this.httpClient.post(API_ENDPOINT + '/api/v1/product/createProduct',{"productName":value1,
      "productCategory": value2,"productDetails": value3},httpOptions)
      .subscribe((data:any) => {
        if(data.response === '108200'){

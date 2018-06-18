@@ -1,48 +1,60 @@
-<html>
-<head>
-</head>
-<body>
-   <button type="button" class="add" (click)="onClick()">Add Product</button>
-  <button type="button" class="next" (click)="onNext()">Next</button>
-  <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
-          <!-- <input id='search' placeholder="Search for a state" formControlName='search' (click)=' openDropDown() ' class=' input-underline search-bar ' type='text'> -->
-          <input id='search' placeholder="Search for a Product" formControlName='search' (keyup)="onKey($event)" (click)= 'openDropDown()'  class='input-underline search-bar' type='text'>
-  </form>
-      <div clickOutside (clickOutside)="closeDropDown()">
-          <div *ngIf='showDropDown' class='search-drop-down'>
-              <div (click)='selectValue(s)' class='search-results ' *ngFor="let s of states | searchFilter: getSearchValue()">
-                  <a [innerHTML]="s | letterBold: getSearchValue()" (click)="displayProduct(s)">
-                         {{s}}
-                  </a>
-              </div>
+<div class="container">
+
+  <div class="row text-center">
+
+    <div class="col-sm-12">
+      <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
+        <div class="input-group mb-3">
+          <input id='search' placeholder="Search for a Product" formControlName='search' (keyup)="onKey($event)" (click)='openDropDown()'
+            class='form-control' type='text'>
+          <div class="input-group-append">
+            <button type="button" class="btn btn-success" (click)="onClick()">Add Product</button>
+            <button type="button" class="btn btn-primary" (click)="onNext()">Next</button>
           </div>
-      </div>
-
-<!-- <input id='search' placeholder="Search for a Product" (keyup)="onKey($event)"  class=' input-underline search-bar ' type='text'> -->
-
-   <mat-card class="first">
-
-    <h3> Product Name : </h3>
-     {{pdt?.name}}
-     <h3> Product Details : </h3>
-     {{pdt?.details}}
-     <h3> Product Category : </h3>
-     {{pdt?.category}}
-     <br/>
-     <button (click)="onRegister()">Add</button>
-
-   </mat-card>
-  <mat-card class="second">
-    <ul>
-        <div *ngFor = "let state of registeredProduct">
-            <li>
-              {{state}}
-              <button type="button" (click)="onRemove(state)" >Remove</button>
-          </li>
         </div>
-    </ul>
+      </form>
+      <div clickOutside (clickOutside)="closeDropDown()">
+        <div *ngIf='showDropDown' class='search-drop-down'>
+          <div class="list-group">
+            <a class="list-group-item list-group-item-action" (click)="selectValue(s)" *ngFor="let s of states | searchFilter: getSearchValue()">{{s}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  </mat-card>
+  <div class="row">
 
-</body>
-</html>
+    <div class="col-sm-6 col-md-5">
+
+      <div class="card">
+        <div class="card-header">Product Description</div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Product Name: {{pdt?.name}}</li>
+            <li class="list-group-item">Product Details: {{pdt?.details}}</li>
+            <li class="list-group-item">Product Category: {{pdt?.category}}</li>
+          </ul>
+          <button class="btn btn-primary" (click)="onRegister()">Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="d-sm-none d-md-block col-md-2"></div>
+
+    <div class="col-sm-6 col-md-5 float-right">
+      <div class="card">
+        <div class="card-header">Registered Products</div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let state of rpdt">
+              {{state}}
+              <button class="btn btn-danger" (click)="onRemove(state)">Remove</button>
+            </li>
+          </ul>
+          <button class="btn btn-primary" (click)="onRegister()">Add</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

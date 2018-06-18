@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import swal from 'sweetalert';
-import { HttpClient , HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { API_ENDPOINT } from '../../config/config';
 
-let data;
-let authToken1;
 
 @Component({
   selector: 'app-homepage',
@@ -13,55 +12,56 @@ let authToken1;
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
+  data: any;
+  authToken1: any;
 
-  constructor(private router:Router,private httpClient:HttpClient) { }
+  constructor(private router: Router, private httpClient: HttpClient) { }
 
   ngOnInit() {
   }
 
-  onClick(){
+  onClick() {
     this.router.navigate(['addpage']);
   }
 
-  onExit(){
+  onExit() {
     localStorage.removeItem('staff');
     this.router.navigate(['']);
   }
 
-  onOn(){
-    data = localStorage.getItem('staff')
-    let authToken1 = JSON.parse(JSON.parse(data).data).authToken;
+  onOn() {
+    this.data = localStorage.getItem('staff');
+    this.authToken1 = JSON.parse(JSON.parse(this.data).data).authToken;
     const httpOptions = {
-          headers: new HttpHeaders({
-            'Content-Type':  'application/json',
-            'authToken': authToken1
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authToken': this.authToken1
       })
     };
-    this.httpClient.post('http://localhost:9000/api/v1/salesman/setActive','',httpOptions)
-     .subscribe((data:any) =>{
-       console.log(data);
-          if(data.response === '108202'){
-            swal("ACTIVE");
-          }
-     })
+    this.httpClient.post(API_ENDPOINT + '/api/v1/salesman/setActive', '', httpOptions)
+      .subscribe((data: any) => {
+        console.log(data);
+        if (data.response === '108202') {
+          swal('ACTIVE');
+        }
+      });
   }
 
-  onOff(){
-    data = localStorage.getItem('staff')
-    let authToken1 = JSON.parse(JSON.parse(data).data).authToken;
+  onOff() {
+    this.data = localStorage.getItem('staff');
+    this.authToken1 = JSON.parse(JSON.parse(this.data).data).authToken;
     const httpOptions = {
-          headers: new HttpHeaders({
-            'Content-Type':  'application/json',
-            'authToken': authToken1
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authToken': this.authToken1
       })
     };
-    this.httpClient.post('http://localhost:9000/api/v1/salesman/unSetActive','',httpOptions)
-     .subscribe((data:any) =>{
-          if(data.response === '108202'){
-            swal("INACTIVE");
-          }
-     })
-
+    this.httpClient.post(API_ENDPOINT + '/api/v1/salesman/unSetActive', '', httpOptions)
+      .subscribe((data: any) => {
+        if (data.response === '108202') {
+          swal('INACTIVE');
+        }
+      });
   }
 
 }
