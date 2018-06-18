@@ -38,6 +38,7 @@ pdt : product;
 
   constructor(private router:Router,private httpClient:HttpClient,private fb: FormBuilder) {
       this.initForm();
+      
   }
   initForm(): FormGroup {
     return this.stateForm = this.fb.group({
@@ -86,11 +87,7 @@ pdt : product;
     this.showDropDown = false;
   }
 
-  onRemove(value){
-      var index1 = this.states.indexOf(value);
-      this.states.splice(index1,1);
-      this.productList.splice(index1,1);
-  }
+
 
   displayProduct(value){
     for(let i=0;i<this.productList.length;i++){
@@ -125,9 +122,12 @@ pdt : product;
           }
      }
    )
-
+     console.log(this.registeredProduct);
   }
 
-
+  onRemove(value4){
+    let index3 = this.registeredProduct.indexOf(value4);
+      this.registeredProduct.splice(index3,1);
+  }
 
 }

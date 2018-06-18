@@ -39,7 +39,8 @@ export class HomepageComponent implements OnInit {
     };
     this.httpClient.post('http://localhost:9000/api/v1/salesman/setActive','',httpOptions)
      .subscribe((data:any) =>{
-          if(data.response === '108200'){
+       console.log(data);
+          if(data.response === '108202'){
             swal("ACTIVE");
           }
      })
@@ -56,7 +57,7 @@ export class HomepageComponent implements OnInit {
     };
     this.httpClient.post('http://localhost:9000/api/v1/salesman/unSetActive','',httpOptions)
      .subscribe((data:any) =>{
-          if(data.response === '108200'){
+          if(data.response === '108202'){
             swal("INACTIVE");
           }
      })

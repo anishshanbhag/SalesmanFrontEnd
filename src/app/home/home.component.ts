@@ -17,13 +17,11 @@ export class HomeComponent implements OnInit {
 
   headers: any;
   constructor(private router:Router,private httpClient:HttpClient) {
-
           data = localStorage.getItem('staff')
-          console.log(data);
-          if(data.data === null){
+          if(JSON.parse(JSON.parse(data).data) === null){
             this.router.navigate[('')];
           }
-          else if(data.data != null){
+          else if(JSON.parse(JSON.parse(data).data) != null){
             let authToken1 = JSON.parse(JSON.parse(data).data).authToken;
             const httpOptions = {
                   headers: new HttpHeaders({
@@ -36,6 +34,7 @@ export class HomeComponent implements OnInit {
                   if(data.response === '108202'){
                     this.router.navigate(['homepage'])
                   }
+                  console.log(data);
              }
            )
           }

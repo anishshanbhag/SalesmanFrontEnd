@@ -37,7 +37,7 @@
         <div *ngFor = "let state of registeredProduct">
             <li>
               {{state}}
-              <button type="button" >Remove</button>
+              <button type="button" (click)="onRemove(state)" >Remove</button>
           </li>
         </div>
     </ul>
