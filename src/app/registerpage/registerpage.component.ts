@@ -53,13 +53,11 @@ export class RegisterpageComponent implements OnInit {
 				'authToken': authToken1
 			})
 		};
-		httpClient.post('http://localhost:9000/api/v1/productSalesman/getProductIdSalesmanIdMappingList', { "salesmanId": id }, httpOptions)
+		httpClient.post('http://10.0.0.255:9000/api/v1/productSalesman/getProductIdSalesmanIdMappingList', { "salesmanId": id }, httpOptions)
 			.subscribe((data: any) => {
 				rpdt = data.data;
 			}
 			)
-
-
 	}
 	initForm(): FormGroup {
 		return this.stateForm = this.fb.group({
@@ -77,22 +75,57 @@ export class RegisterpageComponent implements OnInit {
 	onNext() {
 		this.router.navigate(['homepage']);
 	}
+	// onKey(event: any) {
+	// 	this.values = event.target.value;
+	// 	const httpOptions = {
+	// 		headers: new HttpHeaders({
+	// 			'Content-Type': 'application/json'
+	// 		})
+	// 	};
+	// 	if (this.values.length >= 4) {
+	// 		this.httpClient.post('http://10.0.0.255:9000/api/v1/product/searchProduct', { "queryString": this.values })
+	// 			.subscribe((data: any) => {
+	// 				this.states = [];
+	// 				this.productList = [];
+	// 				let sugesstedProductDetailList = JSON.parse(data.data);
+	// 				for (let i = 0; i < sugesstedProductDetailList.length; i++) {
+	// 					this.productList.push(sugesstedProductDetailList[i]);
+	// 					this.states.push(sugesstedProductDetailList[i].productName);
+	// 				}
+	// 			});
+	// 		this.httpClient.get('http://10.0.0.255:9000/api/v1/product/searchProduct?query='+this.values,httpOptions)
+	// 		 	.subscribe((data: any) => {
+	// 		 		this.states = [];
+	// 		 		this.productList = [];
+	// 		 		let sugesstedProductDetailList = JSON.parse(data.data);
+	// 		 		for (let i = 0; i < sugesstedProductDetailList.length; i++) {
+	// 		 			this.productList.push(sugesstedProductDetailList[i]);
+	// 		 			this.states.push(sugesstedProductDetailList[i].productName);
+	// 				}
+	// 			});
+	// 	}
+	// }
 	onKey(event: any) {
-		this.values = event.target.value;
-		if (this.values.length >= 4) {
-			this.httpClient.post(API_ENDPOINT + '/api/v1/product/searchProduct', { "queryString": this.values })
-				.subscribe((data: any) => {
-					this.states = [];
-					this.productList = [];
-					let sugesstedProductDetailList = JSON.parse(data.data);
-					for (let i = 0; i < sugesstedProductDetailList.length; i++) {
-						this.productList.push(sugesstedProductDetailList[i]);
-						this.states.push(sugesstedProductDetailList[i].productName);
-					}
-				});
-
-		}
-	}
+					this.values = event.target.value;
+					const httpOptions = {
+						headers: new HttpHeaders({
+							'Content-Type': 'application/json'
+						})
+					};
+					if (this.values.length >= 4) {
+						this.httpClient.get('http://10.0.0.255:9000/api/v1/product/searchProduct?query='+this.values,httpOptions)
+						 	.subscribe((data: any) => {
+			          console.log(data);
+						 		this.states = [];
+						 		this.productList = [];
+						 		let sugesstedProductDetailList = JSON.parse(data.data);
+						 		for (let i = 0; i < sugesstedProductDetailList.length; i++) {
+						 			this.productList.push(sugesstedProductDetailList[i]);
+						 			this.states.push(sugesstedProductDetailList[i].productName);
+								}
+							});
+						}
+				}
 	getSearchValue() {
 		return this.stateForm.value.search;
 	}
@@ -134,7 +167,7 @@ export class RegisterpageComponent implements OnInit {
 				'authToken': authToken1
 			})
 		};
-		this.httpClient.post(API_ENDPOINT + '/api/v1/productSalesman/createProductSalesman', {
+		this.httpClient.post('http://10.0.0.255:9000/api/v1/productSalesman/createProductSalesman', {
 			"productId": this.pdt.id,
 			"salesmanId": id
 		}, httpOptions)
@@ -167,7 +200,7 @@ export class RegisterpageComponent implements OnInit {
 				'authToken': authToken1
 			})
 		};
-		this.httpClient.post('http://localhost:9000/api/v1/productSalesman/removeSalesmanProduct', {
+		this.httpClient.post('http://10.0.0.255:9000/api/v1/productSalesman/removeSalesmanProduct', {
 			"productId": pdtId,
 			"salesmanId": id
 		}, httpOptions)

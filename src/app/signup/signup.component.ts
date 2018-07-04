@@ -26,7 +26,7 @@ export class SignupComponent {
       this.validationErrs.push('Password cannot be empty');
     }
     if (pass === confirmPass) {
-      this.httpClient.post(API_ENDPOINT + '/api/v1/salesman/createSalesman', {
+      this.httpClient.post('http://10.0.0.255:9000/api/v1/salesman/createSalesman', {
         'userName': user,
         'password': pass
       })
@@ -40,6 +40,7 @@ export class SignupComponent {
               this.router.navigate(['register']);
             }
           }
+          // console.log(JSON.stringify(data));
         });
     } else {
       this.validationErrs.push('Passwords do not match');

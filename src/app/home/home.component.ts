@@ -4,42 +4,47 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { API_ENDPOINT } from '../../config/config';
 
 
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  data: any;
   authToken1: any;
   headers: any;
-
+data: any;
   constructor(private router: Router, private httpClient: HttpClient) {
-    this.data = JSON.parse(localStorage.getItem('staff'));
-    console.log('data', this.data);
-
-    if (this.data == null || !('data' in this.data)) {
+    this.data = localStorage.getItem('staff');
+    if(this.data!=null){
+      console.log("Success");
+      this.authToken1 = JSON.parse(JSON.parse(this.data).data).authToken;
+      console.log(this.authToken1);
+      if (this.data == null ) {
+        router.navigate(['']);
+      } else {
+        const httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'authToken': this.authToken1
+          })
+        };
+        httpClient.post('http://10.0.0.255:9000/api/v1/salesman/checkAuthToken', '', httpOptions)
+          .subscribe((data: any) => {
+            if (data.response === '108202') {
+              this.router.navigate(['homepage']);
+            }
+          });
+        }
+    }else{
+      console.log("fail");
       router.navigate(['']);
-    } else {
-      this.authToken1 = this.data.authToken;
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-          'authToken': this.authToken1
-        })
-      };
-      httpClient.post(API_ENDPOINT + '/api/v1/salesman/checkAuthToken', '', httpOptions)
-        .subscribe((data: any) => {
-          if (data.response === '108202') {
-            this.router.navigate(['homepage']);
-          }
-          console.log(data);
-        });
     }
   }
 
   onSubmit(user, pass) {
-    this.httpClient.post(API_ENDPOINT + '/api/v1/salesman/checkSalesmanUser', {
+    this.httpClient.post('http://10.0.0.255:9000/api/v1/salesman/checkSalesmanUser', {
       'userName': user,
       'password': pass
     })
@@ -53,6 +58,7 @@ export class HomeComponent {
           alert('Username and password does not match');
           window.location.reload();
         }
+        localStorage.setItem('staff', JSON.stringify(data));
       });
   }
 

@@ -1,6 +1,5 @@
 button{
-  width:60px;
-  height:40px;
+
   border-radius: 5px;
   background-color: #4B8A8D;
   color: #FFFFFF;
@@ -9,9 +8,12 @@ button{
   position: absolute;
   left:45%;
   top:50%;
+  width : 75px;
+  height: 50px;
 }
 .log{
+
   position: absolute;
   left:85%;
-  top:5%;
+  top:2%;
 }

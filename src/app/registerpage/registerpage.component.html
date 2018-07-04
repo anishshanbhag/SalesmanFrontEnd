@@ -5,7 +5,7 @@
     <div class="col-sm-12">
       <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
         <div class="input-group mb-3">
-          <input id='search' placeholder="Search for a Product" formControlName='search' (keyup)="onKey($event)" (click)='openDropDown()'
+          <input id='search' placeholder="Search for a Product" formControlName='search' (keyup)="onKey($event)" (click)='openDropDown()' autocomplete="off"
             class='form-control' type='text'>
           <div class="input-group-append">
             <button type="button" class="btn btn-success" (click)="onClick()">Add Product</button>

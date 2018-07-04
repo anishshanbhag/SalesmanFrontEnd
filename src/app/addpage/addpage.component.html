@@ -2,6 +2,8 @@
 <head>
 </head>
 <body>
+  <button class="next" (click)="goTo()">Next</button>
+
   <div class="card">
     <mat-card>
       <mat-card-title>
@@ -11,19 +13,19 @@
         <form (submit)="onSubmit(name.value,category.value,description.value)">
           <div class="form-group">
             <label for="alterEgo">Enter Name : </label>
-            <input type="text" #name class="form-control" id="alterEgo" required>
+            <input type="text" #name class="form-control" id="alterEgo" autocomplete="off" required>
           </div>
           <br/>
           <br/>
           <div class="form-group">
             <label for="alterEgo">Enter Category : </label>
-            <input type="text" #category/>
+            <input type="text" autocomplete="off" #category/>
           </div>
           <br/>
           <br/>
           <div class="form-group">
             <label for="alterEgo">Enter Description : </label>
-            <input type="text" #description/>
+            <input type="text" autocomplete="off" #description/>
           </div>
           <br/>
           <br/>

@@ -14,13 +14,13 @@
       <div class="card-body">
         <form (submit)="onSubmit(user.value, pass.value, confirmPass.value)">
           <div class="form-group">
-            <input type="text" #user class="form-control" placeholder="Username" required>
+            <input type="text" #user class="form-control" placeholder="Username" required autocomplete="off">
           </div>
           <div class="form-group">
-            <input type="password" #pass class="form-control" placeholder="Password" required>
+            <input type="password" #pass class="form-control" placeholder="Password" required autocomplete="off">
           </div>
           <div class="form-group">
-            <input type="password" #confirmPass class="form-control" placeholder="Confirm Password" required>
+            <input type="password" #confirmPass class="form-control" placeholder="Confirm Password" required autocomplete="off">
           </div>
           <div class="form-group text-center">
             <button type="submit" class="btn btn-lg btn-success">Sign Up</button>

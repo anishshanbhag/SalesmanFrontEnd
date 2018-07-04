@@ -5,9 +5,12 @@
     background-color: #EDE3DF;
 }
 button{
-  width:60px;
-  height:40px;
   border-radius: 5px;
   background-color: #4B8A8D;
   color: #FFFFFF;
+}
+.next{
+  position: absolute;
+  left:80%;
+  top:2%;
 }

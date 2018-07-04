@@ -28,7 +28,7 @@ export class AddpageComponent implements OnInit {
       })
     };
     console.log(data);
-    this.httpClient.post(API_ENDPOINT + '/api/v1/product/createProduct',{"productName":value1,
+    this.httpClient.post('http://10.0.0.255:9000/api/v1/product/createProduct',{"productName":value1,
      "productCategory": value2,"productDetails": value3},httpOptions)
      .subscribe((data:any) => {
        if(data.response === '108200'){
@@ -38,9 +38,12 @@ export class AddpageComponent implements OnInit {
          alert("Error while registering Product");
       }
      }
-   )
-  }
+    )
+    }
 
+    goTo(){
+      this.router.navigate(['register']);
+    }
 
 
 }
