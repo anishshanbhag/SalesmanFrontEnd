@@ -22,6 +22,8 @@ import { SignupComponent } from './signup/signup.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { RegisterpageComponent } from './registerpage/registerpage.component';
 import { AddpageComponent } from './addpage/addpage.component';
+import { UiSwitchModule } from 'ngx-toggle-switch';
+
 
 
 const appRoutes: Routes = [
@@ -71,7 +73,8 @@ const appRoutes: Routes = [
     MatRippleModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    UiSwitchModule
   ],
   providers: [{ provide: 'LOCALSTORAGE', useFactory: getLocalStorage }, ApiService],
   bootstrap: [AppComponent]

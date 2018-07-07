@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/css-toggle-switch@latest/dist/toggle-switch.css" />
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/css-toggle-switch@latest/dist/toggle-switch.css" />
 <label class="switch-light switch-candy" onclick="">
   <input type="checkbox">
 
@@ -13,5 +13,14 @@
   </span>
 </label>
 
+<button (click)="onExit()" class="log">Log Out</button>
+<button (click)="onClick()" class="add">Add Product</button> -->
+<h1>Activate</h1>
+<div *ngIf="state;else other_content">
+  <ui-switch (change)="onChange($event)" size="large" [checked]="true"></ui-switch>
+</div>
+<ng-template #other_content>
+  <ui-switch (change)="onChange($event)" size="large" [checked]="false"></ui-switch>
+</ng-template>
 <button (click)="onExit()" class="log">Log Out</button>
 <button (click)="onClick()" class="add">Add Product</button>

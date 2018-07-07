@@ -25,6 +25,7 @@
     "alert-service": "^1.0.1",
     "angular5-toaster": "^1.0.2",
     "core-js": "^2.5.4",
+    "ngx-toggle-switch": "^2.0.5",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.2.1",
     "sweetalert": "^2.1.0",

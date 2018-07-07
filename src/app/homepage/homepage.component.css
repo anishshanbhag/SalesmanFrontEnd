@@ -12,8 +12,65 @@ button{
   height: 50px;
 }
 .log{
-
   position: absolute;
   left:85%;
   top:2%;
+}
+input[type="checkbox"] {
+  opacity: 0;
+  display: none;
+}
+
+
+.slide-five label {
+  background: #999;
+  width: 130px;
+  height: 30px;
+  border-radius: 30px;
+  box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+  position: relative;
+  display: inline-block;
+  transition: all 1s;
+  cursor: pointer;
+}
+.slide-five label:before{
+  content: "inactive";
+  display: inline-block;
+  color: #000;
+  position: absolute;
+  right: 15px;
+  text-transform: uppercase;
+  line-height: 30px;
+  text-shadow: 1px 1px 0px rgba(255,255,255,.15);
+  transition: all 0.5s;
+}
+.slide-five label:after{
+  width: 30px;
+  height: 30px;
+  background: #fcfff4;
+  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  background: -webkit-linear-gradient(top, #FFF 0%, #F6F6F6 40%, #FFF 100%);
+  display: inline-block;
+  position: absolute;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+  border-radius: 5px;
+  left: 0px;
+  top: 0px;
+  border-radius: 50%;
+  content: "";
+  transition: all 0.5s;
+}
+#slide-five:checked ~ label {
+  background: green;
+}
+#slide-five:checked ~ label:after {
+  left: calc(100% - 30px);
+}
+
+#slide-five:checked ~ label:before{
+  content: "active";
+  right: auto;
+  left: 15px;
+  color: #FFF;
+  text-shadow: 1px 1px 0px rgba(0,0,0,.15);
 }

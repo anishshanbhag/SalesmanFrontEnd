@@ -19,6 +19,9 @@ export class HomepageComponent implements OnInit {
   authToken1: any;
   idOfSalesman: any;
   subscription :any;
+  isNotActive = false;
+  isSetActive = false;
+  state = false;
 
   constructor(private router: Router, private httpClient: HttpClient) {
     this.data = localStorage.getItem('staff');
@@ -33,7 +36,16 @@ export class HomepageComponent implements OnInit {
       .subscribe((data: any) => {
          console.log(data);
       });
-    console.log(this.data);
+      this.httpClient.post('http://10.0.0.255:9000/api/v1/salesman/checkIfActive', '', httpOptions)
+        .subscribe((data: any) => {
+            if(data.response == 108206){
+              this.state = false;
+            }
+            if(data.response == 108205){
+              this.state=true;
+              this.onOn();
+            }
+        });
    }
   ngOnInit() {
   }
@@ -78,7 +90,7 @@ export class HomepageComponent implements OnInit {
                         };
                         this.httpClient.post('http://10.0.0.255:9000/api/v1/salesman/setOccupied', '', httpOptions)
                           .subscribe((data: any) => {
-                             // console.log(data);
+                             console.log(data);
                              window.open('https://joeydash.herokuapp.com/'+id,"_top");
                           });
                       }
@@ -92,6 +104,7 @@ export class HomepageComponent implements OnInit {
   }
 
   onOff() {
+    console.log("Inactive");
     this.data = localStorage.getItem('staff');
     this.authToken1 = JSON.parse(JSON.parse(this.data).data).authToken;
     const httpOptions = {
@@ -107,5 +120,24 @@ export class HomepageComponent implements OnInit {
         }
       });
   }
-
+  onChange(event){
+      if(event==true){
+        this.onOn();
+      }
+      if(event==false){
+        this.onOff();
+      }
+  }
+    // let checkBox = document.getElementById("slide-five");
+    //   function checkIt() {
+    //     console.log(checkBox.checked);
+    //   }
+    //   makeItActive();
+    //   function makeItActive(){
+    //     checkBox.checked = true;
+    //   }
+    //   function makeItInActive(){
+    //     checkBox.checked = false;
+    //   }
+    //   checkIt();
 }
