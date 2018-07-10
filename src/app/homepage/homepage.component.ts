@@ -6,6 +6,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { API_ENDPOINT } from '../../config/config';
 import {Observable} from 'rxjs/Rx';
 import { timer } from 'rxjs/observable/timer';
+import { ElementRef } from '@angular/core';
+import { AfterViewInit } from '@angular/core';
+import { Inject } from '@angular/core';
 // import {ToasterModule, ToasterService} from 'angular5-toaster';
 
 
@@ -14,7 +17,7 @@ import { timer } from 'rxjs/observable/timer';
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css']
 })
-export class HomepageComponent implements OnInit {
+export class HomepageComponent implements OnInit ,AfterViewInit{
   data: any;
   authToken1: any;
   idOfSalesman: any;
@@ -22,30 +25,40 @@ export class HomepageComponent implements OnInit {
   isNotActive = false;
   isSetActive = false;
   state = false;
+  checkboxValue:boolean ;
+  checked:boolean;
 
-  constructor(private router: Router, private httpClient: HttpClient) {
+
+  constructor(private router: Router, private httpClient: HttpClient,private elementRef: ElementRef) {
     this.data = localStorage.getItem('staff');
-    this.authToken1 = JSON.parse(JSON.parse(this.data).data).authToken;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'authToken': this.authToken1
-      })
-    };
-    this.httpClient.post('http://10.0.0.255:9000/api/v1/salesman/unSetOccupied', '', httpOptions)
-      .subscribe((data: any) => {
-         console.log(data);
-      });
-      this.httpClient.post('http://10.0.0.255:9000/api/v1/salesman/checkIfActive', '', httpOptions)
+    if(this.data!=null){
+      this.authToken1 = JSON.parse(JSON.parse(this.data).data).authToken;
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'authToken': this.authToken1
+        })
+      };
+      this.httpClient.post('http://10.0.0.255:9000/api/v1/salesman/unSetOccupied', '', httpOptions)
         .subscribe((data: any) => {
-            if(data.response == 108206){
-              this.state = false;
-            }
-            if(data.response == 108205){
-              this.state=true;
-              this.onOn();
-            }
+           console.log(data);
         });
+        this.httpClient.post('http://10.0.0.255:9000/api/v1/salesman/checkIfActive', '', httpOptions)
+          .subscribe((data: any) => {
+              if(data.response == 108206){
+                this.checked = false;
+                this.makeItInActive();
+              }
+              if(data.response == 108205){
+                this.checked=true;
+                this.onOn();
+                this.makeItActive();
+              }
+          });
+    }
+   }
+   ngAfterViewInit(): void {
+     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#00002E';
    }
   ngOnInit() {
   }
@@ -70,7 +83,7 @@ export class HomepageComponent implements OnInit {
       .subscribe((data: any) => {
         // console.log(data);
         if (data.response === '108200') {
-          swal('ACTIVE');
+          // swal('ACTIVE');
         }
       });
     this.subscription = Observable.interval(5000)
@@ -104,7 +117,6 @@ export class HomepageComponent implements OnInit {
   }
 
   onOff() {
-    console.log("Inactive");
     this.data = localStorage.getItem('staff');
     this.authToken1 = JSON.parse(JSON.parse(this.data).data).authToken;
     const httpOptions = {
@@ -116,28 +128,43 @@ export class HomepageComponent implements OnInit {
     this.httpClient.post('http://10.0.0.255:9000/api/v1/salesman/unSetActive', '', httpOptions)
       .subscribe((data: any) => {
         if (data.response === '108200') {
-          swal('INACTIVE');
+          // swal('INACTIVE');
         }
       });
   }
-  onChange(event){
-      if(event==true){
-        this.onOn();
-      }
-      if(event==false){
-        this.onOff();
-      }
+  // onChange(event){
+  //     if(event==true){
+  //       this.onOn();
+  //     }
+  //     if(event==false){
+  //       this.onOff();
+  //     }
+  // }
+  getUrl(){
+    return "url('VW-12.png')";
   }
     // let checkBox = document.getElementById("slide-five");
     //   function checkIt() {
     //     console.log(checkBox.checked);
     //   }
     //   makeItActive();
-    //   function makeItActive(){
-    //     checkBox.checked = true;
-    //   }
-    //   function makeItInActive(){
-    //     checkBox.checked = false;
-    //   }
+       makeItActive(){
+        this.checkboxValue = true;
+      }
+       makeItInActive(){
+        this.checkboxValue = false;
+      }
     //   checkIt();
+    clicked(){
+      if(this.checkboxValue){
+        this.checked = true;
+        this.onOn();
+      }
+      else{
+        this.checked = false;
+        this.onOff();
+      }
+    }
+
+
 }

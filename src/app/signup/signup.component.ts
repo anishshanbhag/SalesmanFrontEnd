@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 // import { Inject } from '@angular/core';
 import { API_ENDPOINT } from '../../config/config';
+import { AfterViewInit } from '@angular/core';
+import { ElementRef } from '@angular/core';
 
 
 
@@ -11,10 +13,11 @@ import { API_ENDPOINT } from '../../config/config';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent {
+export class SignupComponent implements AfterViewInit{
+
   validationErrs: any = [];
 
-  constructor(private router: Router, private httpClient: HttpClient) { }
+  constructor(private router: Router, private httpClient: HttpClient,private elementRef: ElementRef) { }
 
   onSubmit(user, pass, confirmPass) {
     // console.log(user, pass, confirmPass);
@@ -40,13 +43,14 @@ export class SignupComponent {
               this.router.navigate(['register']);
             }
           }
-          // console.log(JSON.stringify(data));
         });
     } else {
       this.validationErrs.push('Passwords do not match');
     }
   }
-
+  ngAfterViewInit(): void {
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#00002E';
+  }
   signInPage() {
     this.router.navigate(['']);
   }

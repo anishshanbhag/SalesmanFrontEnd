@@ -1,13 +1,57 @@
-/* .card {
-    text-align: center;
-    max-width:500px;
-    margin:auto;
-    background-color: #EDE3DF;
+.card{
+   text-align: center;
+   width:500px;
+   margin:auto;
+   position: absolute;
+   top:15%;
+   left:30%;
 }
-button{
-  width:60px;
-  height:40px;
-  border-radius: 5px;
-  background-color: #4B8A8D;
-  color: #FFFFFF;
-} */
+html {
+  height: 100%;
+}
+input
+{
+ box-shadow: 1px 2px #B0B0B0;
+}
+.form-control{
+  border-radius: 25px;
+  height: 55px;
+  padding-left: 15px;
+}
+.userImage{
+  position: absolute;
+  left:7%;
+  width: 40px;
+  top:22%;
+}
+.passImage{
+  position: absolute;
+  left:7%;
+  width: 40px;
+  top:38%;
+}
+.confirmPassImage{
+  position: absolute;
+  left:7%;
+  width:40px;
+  top:54%;
+}
+body {
+  min-height: 100%;
+  background-color: #00002E;
+}
+.myImage{
+  position: absolute;
+  top:87%;
+  left:83%;
+  color: grey;
+}
+
+.mySignUp{
+  background-color: #00002E;
+  color:#FF7B01;
+  width:440px;
+  height: 50px;
+  border-radius: 25px;
+
+}

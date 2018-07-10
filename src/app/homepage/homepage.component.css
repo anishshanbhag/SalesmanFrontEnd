@@ -1,76 +1,111 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  min-height: 100%;
+  width:100%;
+  background-color: #00002E;
+}
+h1{
+  color:white;
+}
+.myImage{
+  position: absolute;
+  left:30%;
+}
+.myImage1{
+  position: absolute;
+  left:35%;
+  top:35%;
+}
+.myImage2{
+  position: absolute;
+  left:15%;
+}
 button{
-
-  border-radius: 5px;
+  border-radius: 25px;
   background-color: #4B8A8D;
   color: #FFFFFF;
 }
 .add{
   position: absolute;
-  left:45%;
-  top:50%;
-  width : 75px;
+  left:85%;
+  top:2%;
+  width : 150px;
   height: 50px;
+  background-color: #FF850D;
+  color:#00002E;
+  border: none;
+  font-size: 20px;
 }
 .log{
   position: absolute;
-  left:85%;
-  top:2%;
+  left:2%;
+  top:90%;
+  border: none;
+  background: none;
+  color: #8C8C8C;
 }
 input[type="checkbox"] {
   opacity: 0;
   display: none;
 }
-
-
 .slide-five label {
-  background: #999;
-  width: 130px;
-  height: 30px;
+  background: white;
+  width: 200px;
+  height: 60px;
   border-radius: 30px;
   box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
-  position: relative;
+  position: absolute;
+  top:86%;
+  left:40%;
   display: inline-block;
   transition: all 1s;
   cursor: pointer;
 }
 .slide-five label:before{
   content: "inactive";
+  font-size: 20px;
+  font-weight: bold;
   display: inline-block;
-  color: #000;
+  color: #8C8C8C;
   position: absolute;
-  right: 15px;
+  top:14px;
+  left: 74px;
   text-transform: uppercase;
-  line-height: 30px;
+  /* line-height: 30px; */
   text-shadow: 1px 1px 0px rgba(255,255,255,.15);
   transition: all 0.5s;
 }
 .slide-five label:after{
-  width: 30px;
-  height: 30px;
-  background: #fcfff4;
-  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-  background: -webkit-linear-gradient(top, #FFF 0%, #F6F6F6 40%, #FFF 100%);
+  width: 55px;
+  height: 50px;
+  background: #8C8C8C;
+  color: #980000;
   display: inline-block;
   position: absolute;
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
   border-radius: 5px;
-  left: 0px;
-  top: 0px;
+  left: 6px;
+  top: 6px;
   border-radius: 50%;
   content: "";
   transition: all 0.5s;
 }
 #slide-five:checked ~ label {
-  background: green;
+
 }
 #slide-five:checked ~ label:after {
-  left: calc(100% - 30px);
+  left: calc(100% - 65px);
+  background: #FF981C;
 }
 
 #slide-five:checked ~ label:before{
   content: "active";
   right: auto;
-  left: 15px;
-  color: #FFF;
+  left: 36px;
+  top:14px;
+  color: black;
   text-shadow: 1px 1px 0px rgba(0,0,0,.15);
 }

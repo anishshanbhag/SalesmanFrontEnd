@@ -1,6 +1,10 @@
+<html>
+<head>
+</head>
+<body>
 <div class="row">
-  <div class="col-sm-12 col-md-3 col-lg-4"></div>
-  <div class="col-sm-12 col-md-6 col-lg-4">
+  <!-- <div class="col-sm-12 col-md-3 col-lg-4"></div>
+  <div class="col-sm-12 col-md-6 col-lg-4"> -->
     <div class="card">
       <div class="card-header text-center">
         <h2>Sign In</h2>
@@ -8,20 +12,26 @@
       <div class="card-body">
         <form (submit)="onSubmit(user.value, pass.value)">
           <div class="form-group">
-            <input type="text" #user class="form-control" placeholder="Username" autocomplete="off" required>
+            <img src="../../assets/images/VW-16.png" class="userImage">
+            <input type="text" #user class="form-control" placeholder="Username" autocomplete="off" style="text-indent:45px;" required>
           </div>
           <div class="form-group">
-            <input type="password" #pass class="form-control" placeholder="Password" autocomplete="off" required>
+            <img src="../../assets/images/VW-17.png" class="passImage">
+            <input type="password" #pass class="form-control" placeholder="Password" autocomplete="off" style="text-indent:45px;" required>
           </div>
           <div class="form-group text-center">
-            <button type="submit" class="btn btn-lg btn-success">Sign In</button>
+            <button type="submit" class="mySignIn">SIGN IN</button>
           </div>
         </form>
       </div>
       <div class="card-footer text-center">
         Or you can <a class="btn btn-sm btn-outline-info text-black-50" (click)="signUpPage()">sign up</a> instead
       </div>
-    </div>
-  </div>
+    <!-- </div>
+  </div> -->
+</div>
   <div class="col-sm-12 col-md-3 col-lg-4"></div>
 </div>
+<img src="../../assets/images/VW-09.png" class="myImage">
+</body>
+</html>

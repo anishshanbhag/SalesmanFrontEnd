@@ -3,6 +3,7 @@
     max-width:700px;
     margin:auto;
     background-color: #EDE3DF;
+    z-index: 10;
 }
 button{
   border-radius: 5px;

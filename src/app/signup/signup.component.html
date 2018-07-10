@@ -1,12 +1,8 @@
+<html>
+<head>
+</head>
+<body>
 <div class="row">
-  <div class="col-sm-12 col-md-3 col-lg-4"></div>
-  <div class="col-sm-12 col-md-6 col-lg-4">
-
-    <div *ngFor="let err of validationErrs, let i = index" class="alert alert-danger alert-dismissible fade show">
-      <button type="button" class="close" data-dismiss="alert" (click)="clearErrMsg(i)">&times;</button> {{err}}
-    </div>
-
-
     <div class="card">
       <div class="card-header text-center">
         <h2>Sign Up</h2>
@@ -14,24 +10,30 @@
       <div class="card-body">
         <form (submit)="onSubmit(user.value, pass.value, confirmPass.value)">
           <div class="form-group">
-            <input type="text" #user class="form-control" placeholder="Username" required autocomplete="off">
+            <img src="../../assets/images/VW-16.png" class="userImage">
+            <input type="text" #user class="form-control" placeholder="Username" autocomplete="off" style="text-indent:45px;" required>
           </div>
           <div class="form-group">
-            <input type="password" #pass class="form-control" placeholder="Password" required autocomplete="off">
+            <img src="../../assets/images/VW-17.png" class="passImage">
+            <input type="password" #pass class="form-control" placeholder="Password" autocomplete="off" style="text-indent:45px;" required>
           </div>
           <div class="form-group">
-            <input type="password" #confirmPass class="form-control" placeholder="Confirm Password" required autocomplete="off">
+            <img src="../../assets/images/VW-17.png" class="confirmPassImage">
+            <input type="password" #pass class="form-control" placeholder="Confirm Password" autocomplete="off" style="text-indent:45px;" required>
           </div>
           <div class="form-group text-center">
-            <button type="submit" class="btn btn-lg btn-success">Sign Up</button>
+            <button type="submit" class="mySignUp">Sign Up</button>
           </div>
         </form>
       </div>
       <div class="card-footer text-center">
         Or you can
         <a class="btn btn-sm btn-outline-info text-black-50" (click)="signInPage()">sign in</a> instead
-      </div>
+      <!-- </div> -->
     </div>
   </div>
-  <div class="col-sm-12 col-md-3 col-lg-4"></div>
+  <!-- <div class="col-sm-12 col-md-3 col-lg-4"></div> -->
 </div>
+<img alt="Powered By Perpule" src="../../assets/images/VW-09.png" class="myImage" title="grayscale">
+</body>
+</html>

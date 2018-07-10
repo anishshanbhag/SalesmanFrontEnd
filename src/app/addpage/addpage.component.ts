@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient ,HttpHeaders} from '@angular/common/http';
 import { API_ENDPOINT } from '../../config/config';
+import { ElementRef } from '@angular/core';
+import { AfterViewInit } from '@angular/core';
 
 let data;
 let authToken1;
@@ -11,9 +13,12 @@ let authToken1;
   templateUrl: './addpage.component.html',
   styleUrls: ['./addpage.component.css']
 })
-export class AddpageComponent implements OnInit {
+export class AddpageComponent implements OnInit,AfterViewInit {
 
-  constructor(private router:Router,private httpClient:HttpClient) { }
+  ngAfterViewInit(): void {
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#ffffff';
+  }
+  constructor(private router:Router,private httpClient:HttpClient,private elementRef: ElementRef) { }
 
   ngOnInit() {
   }
