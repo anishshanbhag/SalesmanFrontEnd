@@ -117,6 +117,7 @@ export class HomepageComponent implements OnInit ,AfterViewInit{
   }
 
   onOff() {
+    this.unsubscribeMe()
     this.data = localStorage.getItem('staff');
     this.authToken1 = JSON.parse(JSON.parse(this.data).data).authToken;
     const httpOptions = {

@@ -58,6 +58,7 @@ export class RegisterpageComponent implements OnInit {
 				rpdt = data.data;
 			}
 			)
+		console.log(data);
 	}
 	initForm(): FormGroup {
 		return this.stateForm = this.fb.group({
