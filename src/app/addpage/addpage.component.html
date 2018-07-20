@@ -2,11 +2,54 @@
 <head>
 </head>
 <body>
-  <!-- <img src="../../assets/images/VW-08.png" class="backImage"> -->
+  <form (submit)="onSubmit(productName.value,productCategory.value,productMRP.value,productSellingPrice.value,productDescription.value)" enctype="multipart/form-data">
+        <h4>ADD PRODUCT DETAILS</h4>
+        <img src="../../assets/images/VW-08.png">
+        <div class="first">
+          <div class="card">
+            <div class="card-body">
+              <input type="text" #productName class="form-control" placeholder="PRODUCT NAME" class="form-control" id="usr" autocomplete="off">
+            </div>
+          </div>
+        </div>
+        <div class="second">
+          <div class="card">
+            <div class="card-body">
+              <input type="text" #productCategory placeholder="BRAND" class="form-control" id="usr" autocomplete="off">
+            </div>
+          </div>
+        </div>
+        <div class="three">
+          <div class="card">
+            <div class="card-body">
+              <input type="number" #productMRP placeholder="MRP" class="form-control" id="usr" autocomplete="off">
+            </div>
+          </div>
+        </div>
+        <div class="four">
+          <div class="card">
+            <div class="card-body">
+              <input type="number" #productSellingPrice placeholder="SELLING PRICE" class="form-control" id="usr" autocomplete="off">
+            </div>
+          </div>
+        </div>
+        <div class="five">
+          <div class="form-group">
+            <textarea class="form-control" #productDescription placeholder="PRODUCT DESCRIPTION" rows="5" id="comment" autocomplete="off"></textarea>
+          </div>
+        </div>
+        <!-- <div class="six">
+          <div class="form-group">
+                <input type="file" #image class="myImageUplo" (change)="myImageClicked($event)" accept="image/*">
+          </div>
+        </div> -->
+        <button class="reset" (click)="resetPage()">RESET</button>
+        <button class="submit">SUBMIT</button>
+    </form>
+  <img src="../../assets/images/VW-18.png" (click)="goTo()" class="myImage">
 
-  
 
-  <button class="next" (click)="goTo()">Next</button>
+  <!-- <button class="next" (click)="goTo()">Next</button>
   <div class="card">
     <mat-card>
       <mat-card-title>
@@ -38,7 +81,7 @@
 
       </mat-card-content>
     </mat-card>
-  </div>
+  </div> -->
 
 </body>
 </html>

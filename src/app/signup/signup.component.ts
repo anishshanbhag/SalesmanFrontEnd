@@ -29,7 +29,7 @@ export class SignupComponent implements AfterViewInit{
       this.validationErrs.push('Password cannot be empty');
     }
     if (pass === confirmPass) {
-      this.httpClient.post('http://10.0.0.255:9000/api/v1/salesman/createSalesman', {
+      this.httpClient.post('http://10.0.2.226:9000/api/v1/salesman/createSalesman', {
         'userName': user,
         'password': pass
       })
@@ -40,7 +40,7 @@ export class SignupComponent implements AfterViewInit{
           } else {
             if (this.validationErrs.length === 0) {
               localStorage.setItem('staff', JSON.stringify(data));
-              this.router.navigate(['register']);
+              this.router.navigate(['homepage']);
             }
           }
         });

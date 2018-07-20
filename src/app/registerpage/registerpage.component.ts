@@ -53,7 +53,7 @@ export class RegisterpageComponent implements OnInit {
 				'authToken': authToken1
 			})
 		};
-		httpClient.post('http://10.0.0.255:9000/api/v1/productSalesman/getProductIdSalesmanIdMappingList', { "salesmanId": id }, httpOptions)
+		httpClient.post('http://10.0.2.226:9000/api/v1/productSalesman/getProductIdSalesmanIdMappingList', { "salesmanId": id }, httpOptions)
 			.subscribe((data: any) => {
 				rpdt = data.data;
 			}
@@ -114,7 +114,7 @@ export class RegisterpageComponent implements OnInit {
 						})
 					};
 					if (this.values.length >= 4) {
-						this.httpClient.get('http://10.0.0.255:9000/api/v1/product/searchProduct?query='+this.values,httpOptions)
+						this.httpClient.get('http://10.0.2.226:9000/api/v1/product/searchProduct?query='+this.values,httpOptions)
 						 	.subscribe((data: any) => {
 			          console.log(data);
 						 		this.states = [];
@@ -168,7 +168,7 @@ export class RegisterpageComponent implements OnInit {
 				'authToken': authToken1
 			})
 		};
-		this.httpClient.post('http://10.0.0.255:9000/api/v1/productSalesman/createProductSalesman', {
+		this.httpClient.post('http://10.0.2.226:9000/api/v1/productSalesman/createProductSalesman', {
 			"productId": this.pdt.id,
 			"salesmanId": id
 		}, httpOptions)
@@ -201,7 +201,7 @@ export class RegisterpageComponent implements OnInit {
 				'authToken': authToken1
 			})
 		};
-		this.httpClient.post('http://10.0.0.255:9000/api/v1/productSalesman/removeSalesmanProduct', {
+		this.httpClient.post('http://10.0.2.226:9000/api/v1/productSalesman/removeSalesmanProduct', {
 			"productId": pdtId,
 			"salesmanId": id
 		}, httpOptions)

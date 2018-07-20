@@ -25,11 +25,10 @@
   <ng-template #other_content>
     <ui-switch (change)="onChange($event)" size="large" [checked]="false"></ui-switch>
   </ng-template> -->
-
-  <div class="slide-five margin-top">
-    <input [(ngModel)]="checkboxValue" (change)="clicked()" type="checkbox"  id="slide-five" />
-    <label for="slide-five"></label>
-  </div>
+      <div class="slide-five margin-top">
+        <input [(ngModel)]="checkboxValue" (change)="clicked()" type="checkbox"  id="slide-five" />
+        <label for="slide-five"></label>
+      </div>
 
   <div *ngIf="checked;else other_content">
     <img src="../../assets/images/VW-12.png" class="myImage">

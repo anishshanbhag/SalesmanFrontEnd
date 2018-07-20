@@ -15,6 +15,8 @@ let authToken1;
 })
 export class AddpageComponent implements OnInit,AfterViewInit {
 
+  selectedFile = null;
+  value6 = "";
   ngAfterViewInit(): void {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#ffffff';
   }
@@ -23,7 +25,7 @@ export class AddpageComponent implements OnInit,AfterViewInit {
   ngOnInit() {
   }
 
-  onSubmit(value1,value2,value3){
+  onSubmit(value1,value2,value3,value4,value5){
     data = localStorage.getItem('staff')
     let authToken1 = JSON.parse(JSON.parse(data).data).authToken;
     const httpOptions = {
@@ -33,22 +35,29 @@ export class AddpageComponent implements OnInit,AfterViewInit {
       })
     };
     console.log(data);
-    this.httpClient.post('http://10.0.0.255:9000/api/v1/product/createProduct',{"productName":value1,
-     "productCategory": value2,"productDetails": value3},httpOptions)
+    this.httpClient.post('http://10.0.2.226:9000/api/v1/product/createProduct',{"productName":value1,
+     "productCategory": value2,"productDetails":value5 ,"productMRP":value3,"productSellingPrice":value4},httpOptions)
      .subscribe((data:any) => {
+       console.log(data);
        if(data.response === '108200'){
-          this.router.navigate(['register']);
+          this.router.navigate(['homepage']);
        }
       else{
          alert("Error while registering Product");
       }
+      console.log(data);
      }
     )
     }
 
     goTo(){
-      this.router.navigate(['register']);
+      this.router.navigate(['homepage']);
     }
-
-
+    resetPage(){
+      window.location.reload();
+    }
+    // myImageClicked(event){
+    //   this.selectedFile = event.target.files[0];
+    //   this.value6 = this.selectedFile;
+    // }
 }

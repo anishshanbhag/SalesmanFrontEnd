@@ -30,7 +30,7 @@ export class HomeComponent implements AfterViewInit{
               'authToken': this.authToken1
             })
           };
-          httpClient.post('http://10.0.0.255:9000/api/v1/salesman/checkAuthToken', '', httpOptions)
+          httpClient.post('http://10.0.2.226:9000/api/v1/salesman/checkAuthToken', '', httpOptions)
             .subscribe((data: any) => {
               if (data.response === '108202') {
                 this.router.navigate(['homepage']);
@@ -49,7 +49,7 @@ export class HomeComponent implements AfterViewInit{
       this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#00002E';
   }
   onSubmit(user, pass) {
-    this.httpClient.post('http://10.0.0.255:9000/api/v1/salesman/checkSalesmanUser', {
+    this.httpClient.post('http://10.0.2.226:9000/api/v1/salesman/checkSalesmanUser', {
       'userName': user,
       'password': pass
     })

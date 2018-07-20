@@ -5,6 +5,11 @@
     background-color: #EDE3DF;
     z-index: 10;
 }
+input{
+  border-top:none ;
+  border-left: none;
+  border-right: none;
+}
 button{
   border-radius: 5px;
   background-color: #4B8A8D;
@@ -14,4 +19,92 @@ button{
   position: absolute;
   left:80%;
   top:2%;
+}
+h4{
+  background-color: #00002E;
+  color: white;
+  padding: 23px 25px 25px 58px;
+}
+.myImage{
+  background-color: #00002E;
+  position: absolute;
+  top:4%;
+  left:1%;
+}
+
+.card{
+  background-color: white;
+  box-shadow: 2px 2px #ccc;
+}
+.form-group{
+  background-color: white;
+  box-shadow: 2px 2px #ccc;
+}
+.brand{
+  color:#ABADAB;
+  font-size: 12px;
+  position: absolute;
+  left:3%;
+  top:2%;
+}
+.first{
+ position: absolute;
+ top:22%;
+ left:20%;
+ width: 350px;
+ height:70px;
+ border-radius: 5px;
+}
+.second{
+  position: absolute;
+  top:22%;
+  left: 50%;
+  width: 350px;
+}
+.three{
+  position: absolute;
+  top:40%;
+  left:20%;
+  width: 350px;
+}
+.four{
+  position: absolute;
+  top:40%;
+  left:50%;
+  width: 350px;
+}
+.five{
+  position: absolute;
+  top:58%;
+  left:20%;
+  width: 350px;
+  border-radius: 5px;
+}
+.six{
+  position: absolute;
+  top:58%;
+  left:50%;
+  width: 350px;
+  border-radius: 5px;
+}
+.myImageUplo{
+  padding: 53px;
+}
+.reset{
+  position: absolute;
+  top:85%;
+  left:28%;
+  width:250px;
+  height: 60px;
+  background-color: #A8ABA9;
+  color: #00002E;
+}
+.submit{
+  position: absolute;
+  top:85%;
+  left:50%;
+  width: 250px;
+  height: 60px;
+  background-color: #00002E;
+  color: white;
 }
