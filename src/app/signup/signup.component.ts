@@ -29,7 +29,7 @@ export class SignupComponent implements AfterViewInit{
       this.validationErrs.push('Password cannot be empty');
     }
     if (pass === confirmPass) {
-      this.httpClient.post('http://10.0.2.226:9000/api/v1/salesman/createSalesman', {
+      this.httpClient.post('http://104.155.137.69:9000/api/v1/salesman/createSalesman', {
         'userName': user,
         'password': pass
       })

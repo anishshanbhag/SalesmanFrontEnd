@@ -40,11 +40,11 @@ export class HomepageComponent implements OnInit ,AfterViewInit{
           'authToken': this.authToken1
         })
       };
-      this.httpClient.post('http://10.0.2.226:9000/api/v1/salesman/unSetOccupied', '', httpOptions)
+      this.httpClient.post('http://104.155.137.69:9000/api/v1/salesman/unSetOccupied', '', httpOptions)
         .subscribe((data: any) => {
            console.log(data);
         });
-        this.httpClient.post('http://10.0.2.226:9000/api/v1/salesman/checkIfActive', '', httpOptions)
+        this.httpClient.post('http://104.155.137.69:9000/api/v1/salesman/checkIfActive', '', httpOptions)
           .subscribe((data: any) => {
               if(data.response == 108206){
                 this.checked = false;
@@ -81,7 +81,7 @@ export class HomepageComponent implements OnInit ,AfterViewInit{
         'authToken': this.authToken1
       })
     };
-    this.httpClient.post('http://10.0.2.226:9000/api/v1/salesman/setActive', '', httpOptions)
+    this.httpClient.post('http://104.155.137.69:9000/api/v1/salesman/setActive', '', httpOptions)
       .subscribe((data: any) => {
         // console.log(data);
         if (data.response === '108200') {
@@ -90,7 +90,7 @@ export class HomepageComponent implements OnInit ,AfterViewInit{
       });
     this.subscription = Observable.interval(5000)
 								.subscribe(() => {
-                  this.httpClient.post('http://10.0.2.226:9000/api/v1/room/getRoom', {'id':this.idOfSalesman}, httpOptions)
+                  this.httpClient.post('http://104.155.137.69:9000/api/v1/room/getRoom', {'id':this.idOfSalesman}, httpOptions)
                     .subscribe((data: any) => {
                       let id = JSON.parse(data.data).id;
                       if(id != undefined){
@@ -103,10 +103,10 @@ export class HomepageComponent implements OnInit ,AfterViewInit{
                             'authToken': this.authToken1
                           })
                         };
-                        this.httpClient.post('http://10.0.2.226:9000/api/v1/salesman/setOccupied', '', httpOptions)
+                        this.httpClient.post('http://104.155.137.69:9000/api/v1/salesman/setOccupied', '', httpOptions)
                           .subscribe((data: any) => {
                              console.log(data);
-                             window.open('http://localhost:3000/'+id,"_top");
+                             window.open('http://104.155.137.69:3000/'+id,"_top");
                           });
                       }
 
@@ -128,7 +128,7 @@ export class HomepageComponent implements OnInit ,AfterViewInit{
         'authToken': this.authToken1
       })
     };
-    this.httpClient.post('http://10.0.2.226:9000/api/v1/salesman/unSetActive', '', httpOptions)
+    this.httpClient.post('http://104.155.137.69:9000/api/v1/salesman/unSetActive', '', httpOptions)
       .subscribe((data: any) => {
         if (data.response === '108200') {
           // swal('INACTIVE');

@@ -35,7 +35,7 @@ export class AddpageComponent implements OnInit,AfterViewInit {
       })
     };
     console.log(data);
-    this.httpClient.post('http://10.0.2.226:9000/api/v1/product/createProduct',{"productName":value1,
+    this.httpClient.post('http://104.155.137.69:9000/api/v1/product/createProduct',{"productName":value1,
      "productCategory": value2,"productDetails":value5 ,"productMRP":value3,"productSellingPrice":value4},httpOptions)
      .subscribe((data:any) => {
        console.log(data);
